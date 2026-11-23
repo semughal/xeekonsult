@@ -3,158 +3,270 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Xeekonsult hjälper organisationer med digital utveckling, systemdesign och teknisk rådgivning.">
-  <title>Xeekonsult — Digital utveckling & teknisk rådgivning</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B1F3A'/%3E%3Cpath d='M16 16h12l8 16-8 16H16l8-16-8-16zm20 0h12l-8 16 8 16H36l-8-16 8-16z' fill='%236BB7FF'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
+  <meta name="theme-color" content="#071626">
+  <meta name="description" content="XEE KONSULT AB erbjuder redovisning, IT-konsultation, molntjänster och webbutveckling. Vi hjälper företag att arbeta smartare och växa digitalt.">
+  <title>XEE KONSULT AB — Redovisning, IT & digital utveckling</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --navy: #071626;
+      --navy-2: #0b2035;
+      --panel: #102941;
+      --blue: #4285ff;
+      --turquoise: #42e3d0;
+      --white: #f3f8ff;
+      --muted: #a7b8cb;
+      --line: rgba(192, 216, 240, .14);
+      --max: 1160px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body { margin: 0; background: var(--navy); color: var(--white); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
+    .skip-link { position: absolute; z-index: 99; left: 16px; top: -60px; padding: 10px 14px; background: var(--turquoise); color: var(--navy); }
+    .skip-link:focus { top: 12px; }
+    .header { position: sticky; z-index: 20; top: 0; background: rgba(7,22,38,.88); border-bottom: 1px solid var(--line); backdrop-filter: blur(16px); }
+    .nav { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-size: 15px; font-weight: 800; letter-spacing: .12em; white-space: nowrap; }
+    .brand-mark { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 11px; color: var(--navy); background: linear-gradient(135deg, var(--turquoise), #72a8ff); font-size: 20px; letter-spacing: -.08em; }
+    .nav-right, .nav-links { display: flex; align-items: center; }
+    .nav-right { gap: 26px; }
+    .nav-links { gap: 25px; color: #d3deeb; font-size: 13px; }
+    .nav-links a:hover, .footer a:hover { color: var(--turquoise); }
+    .lang-switch { display: inline-flex; align-items: center; gap: 3px; padding: 4px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.035); }
+    .lang-switch button { min-width: 37px; border: 0; border-radius: 5px; padding: 5px 7px; color: var(--muted); background: transparent; cursor: pointer; font-size: 11px; font-weight: 800; }
+    .lang-switch button[aria-pressed="true"] { color: var(--navy); background: var(--turquoise); }
+    .menu-button { display: none; width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 8px; color: var(--white); background: transparent; cursor: pointer; }
+    .hero { position: relative; overflow: hidden; min-height: 640px; display: flex; align-items: center; background: radial-gradient(ellipse at 82% 45%, rgba(39,112,199,.23), transparent 40%), linear-gradient(130deg, #071626, #0a1d31 65%, #0c2b3c); }
+    .hero::after { position: absolute; content: ""; width: 560px; height: 560px; right: -100px; top: 8px; border: 1px solid rgba(66,227,208,.1); border-radius: 50%; box-shadow: 0 0 0 70px rgba(66,227,208,.025), 0 0 0 140px rgba(66,227,208,.02); pointer-events: none; }
+    .hero-content { position: relative; z-index: 1; width: min(720px, 70%); padding: 100px 0 112px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 20px; color: var(--turquoise); font-size: 11px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 24px; height: 2px; background: currentColor; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 760px; margin-bottom: 22px; font-size: clamp(46px, 7vw, 82px); line-height: 1.04; letter-spacing: -.055em; }
+    .gradient-text { color: transparent; background: linear-gradient(95deg, var(--turquoise), #85aaff 75%); background-clip: text; -webkit-background-clip: text; }
+    .hero-copy { max-width: 610px; margin-bottom: 32px; color: #c1cfdf; font-size: clamp(16px, 2vw, 19px); }
+    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+    .button { min-height: 49px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 0 19px; border: 1px solid transparent; border-radius: 7px; font-size: 13px; font-weight: 750; transition: transform .18s ease, background .18s ease, border-color .18s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { color: #061827; background: var(--turquoise); }
+    .button-primary:hover { background: #75f2e3; }
+    .button-secondary { border-color: var(--line); background: rgba(255,255,255,.035); }
+    .button-secondary:hover { border-color: rgba(66,227,208,.6); }
+    .hero-note { display: flex; align-items: center; gap: 9px; margin-top: 42px; color: #9eb1c5; font-size: 12px; }
+    .hero-note span { width: 7px; height: 7px; border-radius: 50%; background: var(--turquoise); box-shadow: 0 0 12px var(--turquoise); }
+    .trust-bar { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #091a2b; }
+    .trust-inner { min-height: 84px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .trust-label { color: #7890a9; font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .trust-items { display: flex; flex-wrap: wrap; gap: clamp(18px, 4vw, 52px); color: #d7e3ef; font-size: 13px; font-weight: 650; }
+    .section { padding: 108px 0; }
+    .section-heading { max-width: 680px; margin-bottom: 44px; }
+    .section-heading h2, .about-copy h2, .contact-copy h2 { margin-bottom: 14px; font-size: clamp(34px, 5vw, 54px); line-height: 1.1; letter-spacing: -.045em; }
+    .section-heading > p:last-child { color: var(--muted); font-size: 16px; }
+    .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .service-card { position: relative; min-height: 280px; overflow: hidden; padding: 28px; border: 1px solid var(--line); border-radius: 12px; background: linear-gradient(145deg, rgba(18,42,66,.94), rgba(11,31,51,.9)); transition: transform .2s ease, border-color .2s ease; }
+    .service-card:hover { transform: translateY(-4px); border-color: rgba(66,227,208,.48); }
+    .service-card::after { position: absolute; right: -48px; bottom: -72px; width: 180px; height: 180px; content: ""; border: 1px solid rgba(66,227,208,.09); border-radius: 50%; box-shadow: 0 0 0 24px rgba(66,227,208,.025), 0 0 0 48px rgba(66,227,208,.02); pointer-events: none; }
+    .card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 29px; }
+    .icon-box { width: 46px; height: 46px; display: grid; place-items: center; border: 1px solid rgba(66,227,208,.22); border-radius: 10px; color: var(--turquoise); background: rgba(66,227,208,.07); }
+    .icon-box svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .card-index { color: #8196aa; font-size: 11px; letter-spacing: .12em; }
+    .service-card h3 { margin-bottom: 10px; font-size: 21px; letter-spacing: -.025em; }
+    .service-card p { max-width: 480px; margin-bottom: 18px; color: var(--muted); font-size: 14px; }
+    .tags { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 7px; }
+    .tags span { padding: 5px 9px; border: 1px solid rgba(183,205,225,.12); border-radius: 30px; color: #c1d0df; background: rgba(255,255,255,.025); font-size: 10px; }
+    .about { background: #091a2b; border-block: 1px solid var(--line); }
+    .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: 70px; }
+    .about-visual { position: relative; min-height: 380px; display: grid; place-items: center; overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: radial-gradient(circle at center, rgba(66,133,255,.16), transparent 55%), #0b2035; }
+    .about-visual::before, .about-visual::after { position: absolute; content: ""; border: 1px solid rgba(66,227,208,.18); border-radius: 50%; }
+    .about-visual::before { width: 250px; height: 250px; }
+    .about-visual::after { width: 330px; height: 330px; border-color: rgba(66,133,255,.15); }
+    .visual-core { position: relative; z-index: 1; width: 116px; height: 116px; display: grid; place-items: center; border: 1px solid rgba(66,227,208,.35); border-radius: 28px; color: var(--turquoise); background: linear-gradient(145deg, #123653, #0b2238); box-shadow: 0 0 70px rgba(66,133,255,.2); font-size: 44px; font-weight: 800; letter-spacing: -.1em; }
+    .visual-label { position: absolute; z-index: 2; padding: 8px 12px; border: 1px solid var(--line); border-radius: 6px; color: #d7e3ef; background: #102941; font-size: 11px; }
+    .visual-label.one { top: 19%; left: 12%; }.visual-label.two { top: 26%; right: 9%; }.visual-label.three { bottom: 17%; left: 18%; }.visual-label.four { right: 13%; bottom: 14%; }
+    .about-copy h2 { margin-bottom: 20px; }
+    .about-copy > p:not(.eyebrow) { color: var(--muted); font-size: 15px; }
+    .values { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 27px; }
+    .value { display: flex; align-items: center; gap: 9px; color: #d4dfeb; font-size: 12px; }
+    .value::before { content: "✓"; color: var(--turquoise); font-weight: 800; }
+    .contact-section { padding: 88px 0; background: linear-gradient(110deg, #0c2940, #0a2035 70%, #0b2b39); }
+    .contact-panel { display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 50px; }
+    .contact-copy h2 { max-width: 570px; }
+    .contact-copy > p:not(.eyebrow) { max-width: 540px; margin-bottom: 0; color: #b6c8d8; }
+    .contact-card { padding: 26px; border: 1px solid var(--line); border-radius: 12px; background: rgba(4,17,30,.35); }
+    .contact-card-label { margin-bottom: 7px; color: #8da3b8; font-size: 10px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .email-link { display: inline-block; margin-bottom: 21px; color: var(--turquoise); font-size: clamp(18px, 2.4vw, 25px); font-weight: 750; }
+    .contact-card p { margin: 0; color: #b6c8d8; font-size: 12px; }
+    .footer { padding: 25px 0; border-top: 1px solid var(--line); background: #061321; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer .brand { font-size: 12px; }.footer .brand-mark { width: 30px; height: 30px; border-radius: 8px; font-size: 16px; }
+    .footer p { margin: 0; color: #8fa2b5; font-size: 11px; }
+    :focus-visible { outline: 2px solid var(--turquoise); outline-offset: 4px; }
+    @media (max-width: 850px) {
+      .nav-links { gap: 15px; }.nav-right { gap: 16px; }
+      .hero { min-height: 590px; }.hero-content { width: 82%; }
+      .about-grid { gap: 38px; }.about-visual { min-height: 320px; }
+    }
+    @media (max-width: 700px) {
+      .container { width: min(var(--max), calc(100% - 36px)); }
+      .nav { min-height: 70px; }.menu-button { display: grid; place-items: center; }
+      .nav-right { gap: 10px; }.nav-links { display: none; position: absolute; top: 70px; left: 0; right: 0; padding: 18px 22px 22px; align-items: stretch; flex-direction: column; gap: 0; border-bottom: 1px solid var(--line); background: #091a2b; }
+      .nav-links.open { display: flex; }.nav-links a { padding: 12px 0; }.nav-links a + a { border-top: 1px solid var(--line); }
+      .hero { min-height: 590px; }.hero::after { width: 390px; height: 390px; right: -225px; top: 130px; }.hero-content { width: 100%; padding: 85px 0; }
+      .trust-inner { padding: 19px 0; align-items: flex-start; flex-direction: column; }.trust-items { gap: 12px 22px; }
+      .section { padding: 78px 0; }.service-grid { grid-template-columns: 1fr; }.service-card { min-height: 255px; }
+      .about-grid, .contact-panel { grid-template-columns: 1fr; }.about-visual { min-height: 290px; }.about-copy { grid-row: 1; }
+      .contact-panel { gap: 30px; }
+    }
+    @media (max-width: 440px) {
+      .container { width: calc(100% - 30px); }.brand { font-size: 13px; gap: 8px; }.brand-mark { width: 34px; height: 34px; }
+      .hero h1 { font-size: 45px; }.hero-copy { font-size: 16px; }.actions { align-items: stretch; flex-direction: column; max-width: 280px; }
+      .button { width: 100%; }.service-card { padding: 22px; }.values { grid-template-columns: 1fr; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+  </style>
 </head>
 <body>
-  <header class="nav-wrap">
-    <nav class="nav container" aria-label="Huvudnavigation">
-      <a class="brand" href="#top" aria-label="Xeekonsult startsida">
-        <span class="brand-mark" aria-hidden="true">X</span>
-        <span>xeekonsult</span>
-      </a>
-      <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav-links">
-        <span></span><span></span>
-        <span class="sr-only">Öppna meny</span>
-      </button>
-      <div class="nav-links" id="nav-links">
-        <a href="#services">Tjänster</a>
-        <a href="#approach">Arbetssätt</a>
-        <a href="#about">Om oss</a>
-        <a class="nav-cta" href="#contact">Kontakta oss <span aria-hidden="true">↗</span></a>
+  <a class="skip-link" href="#main" data-i18n="skip">Hoppa till innehåll</a>
+  <header class="header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="XEE KONSULT AB home"><span class="brand-mark" aria-hidden="true">X</span><span>XEE KONSULT AB</span></a>
+      <div class="nav-right">
+        <div class="nav-links" id="nav-links">
+          <a href="#services" data-i18n="navServices">Tjänster</a>
+          <a href="#about" data-i18n="navAbout">Om oss</a>
+          <a href="#contact" data-i18n="navContact">Kontakt</a>
+        </div>
+        <div class="lang-switch" role="group" aria-label="Choose language">
+          <button type="button" data-lang="sv" aria-pressed="true">SV</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button class="menu-button" type="button" aria-label="Öppna meny" aria-expanded="false" aria-controls="nav-links"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
       </div>
     </nav>
   </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="hero-grid container">
-        <div class="hero-copy">
-          <p class="eyebrow"><span></span> Teknisk rådgivning</p>
-          <h1>Vi gör komplex teknik<br><em>lätt att förstå.</em></h1>
-          <p class="hero-lede">Strategi, utveckling och expertstöd för organisationer som vill ta nästa steg — digitalt, hållbart och tryggt.</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#contact">Boka ett samtal <span aria-hidden="true">↗</span></a>
-            <a class="text-link" href="#services">Utforska våra tjänster <span aria-hidden="true">↓</span></a>
-          </div>
-        </div>
-        <div class="hero-visual" aria-label="Abstrakt illustration av sammankopplade system">
-          <div class="orb orb-main"><span>01</span></div>
-          <div class="orb orb-small"><span>02</span></div>
-          <svg class="orbit" viewBox="0 0 560 560" aria-hidden="true">
-            <circle cx="280" cy="280" r="210" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="5 9"/>
-            <circle cx="280" cy="280" r="145" fill="none" stroke="currentColor" stroke-width="1"/>
-            <path d="M74 280h412M280 74v412" fill="none" stroke="currentColor" stroke-width="1" opacity=".35"/>
-            <circle cx="280" cy="70" r="7" fill="currentColor"/>
-            <circle cx="430" cy="430" r="7" fill="currentColor"/>
-          </svg>
-          <div class="status-card">
-            <span class="status-dot"></span>
-            <span>Rådgivning i verklig rörelse</span>
-          </div>
-        </div>
-      </div>
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="container"><div class="hero-content">
+        <p class="eyebrow" data-i18n="heroEyebrow">Redovisning · IT · Digital utveckling</p>
+        <h1 data-i18n-html="heroTitle">Ert företag.<br><span class="gradient-text">Redo för nästa steg.</span></h1>
+        <p class="hero-copy" data-i18n="heroCopy">XEE KONSULT AB hjälper företag att förenkla vardagen och skapa nya möjligheter — med pålitlig redovisning och smarta digitala lösningar.</p>
+        <div class="actions"><a class="button button-primary" href="#contact"><span data-i18n="heroCta">Låt oss prata</span><span aria-hidden="true">↗</span></a><a class="button button-secondary" href="#services"><span data-i18n="heroSecondary">Utforska våra tjänster</span><span aria-hidden="true">↓</span></a></div>
+        <div class="hero-note"><span aria-hidden="true"></span><span data-i18n="heroNote">En engagerad partner för företagets hela resa</span></div>
+      </div></div>
     </section>
 
-    <section class="trusted" aria-label="Fokusområden">
-      <div class="container trusted-inner">
-        <span>Fokusområden</span>
-        <div class="focus-list">
-          <span>Digital strategi</span>
-          <span>Systemutveckling</span>
-          <span>Teknisk arkitektur</span>
-          <span>Optimering</span>
-        </div>
-      </div>
-    </section>
+    <div class="trust-bar"><div class="container trust-inner"><span class="trust-label" data-i18n="focusLabel">Våra kompetensområden</span><div class="trust-items"><span data-i18n="focusAccounting">Redovisning</span><span data-i18n="focusIT">IT-konsultation</span><span data-i18n="focusCloud">Microsoft Cloud</span><span data-i18n="focusWeb">Webb & mobil</span></div></div></div>
 
-    <section class="services section" id="services">
+    <section class="section" id="services">
       <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow"><span></span> Vad vi gör</p>
-          <h2>Rätt kompetens.<br>Rätt insats.</h2>
-        </div>
+        <div class="section-heading"><p class="eyebrow" data-i18n="servicesEyebrow">Vad vi erbjuder</p><h2 data-i18n="servicesTitle">Kompetensen ni behöver.<br>Lösningarna som gör skillnad.</h2><p data-i18n="servicesIntro">Från den löpande ekonomin till nästa digitala satsning — vi bidrar med erfarenhet, struktur och ett personligt engagemang.</p></div>
         <div class="service-grid">
           <article class="service-card">
-            <span class="service-number">01</span>
-            <div class="service-icon" aria-hidden="true">⌁</div>
-            <h3>Strategi & konsultation</h3>
-            <p>Vi hjälper er prioritera rätt, sätta tydlig riktning och fatta välgrundade tekniska beslut.</p>
-            <a href="#contact" aria-label="Läs mer om strategi och konsultation">Mer om tjänsten <span>↗</span></a>
-          </article>
-          <article class="service-card featured">
-            <span class="service-number">02</span>
-            <div class="service-icon" aria-hidden="true">◫</div>
-            <h3>Utveckling & integration</h3>
-            <p>Skalbara lösningar som förenar affär och teknik — byggda för att fungera i praktiken.</p>
-            <a href="#contact" aria-label="Läs mer om utveckling och integration">Mer om tjänsten <span>↗</span></a>
+            <div class="card-top"><span class="icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h2m4 0h2m-8 4h2m4 0h2m-8 4h2m4 0h2"/></svg></span><span class="card-index">01 / 04</span></div>
+            <h3 data-i18n="accountingTitle">Redovisning & bokföring</h3><p data-i18n="accountingCopy">Ordning och trygghet i företagets ekonomi. Vi hjälper er med den löpande redovisningen, så att ni får mer tid att fokusera på verksamheten.</p>
+            <div class="tags"><span data-i18n="tagBookkeeping">Bokföring</span><span data-i18n="tagInvoicing">Fakturering</span><span data-i18n="tagVat">Moms</span><span data-i18n="tagPayroll">Löner</span><span data-i18n="tagAnnual">Årsredovisning</span></div>
           </article>
           <article class="service-card">
-            <span class="service-number">03</span>
-            <div class="service-icon" aria-hidden="true">◎</div>
-            <h3>Arkitektur & optimering</h3>
-            <p>Vi granskar befintliga system, identifierar flaskhalsar och skapar en hållbar väg framåt.</p>
-            <a href="#contact" aria-label="Läs mer om arkitektur och optimering">Mer om tjänsten <span>↗</span></a>
+            <div class="card-top"><span class="icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 4 7v5c0 5 3.4 8 8 9 4.6-1 8-4 8-9V7l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="card-index">02 / 04</span></div>
+            <h3 data-i18n="itTitle">IT-konsultation</h3><p data-i18n="itCopy">Teknik som stödjer verksamhetens mål. Vi hjälper er planera, utveckla och förbättra IT-miljöer och digitala arbetssätt.</p>
+            <div class="tags"><span data-i18n="tagArchitecture">IT-arkitektur</span><span data-i18n="tagSoftware">Mjukvaruutveckling</span><span data-i18n="tagDigital">Digitalisering</span><span data-i18n="tagAdvisory">Rådgivning</span></div>
+          </article>
+          <article class="service-card">
+            <div class="card-top"><span class="icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 18H6a4 4 0 0 1-.5-8A6.5 6.5 0 0 1 18 8a5 5 0 0 1 0 10h-1"/><path d="m9 15 3-3 3 3m-3-3v9"/></svg></span><span class="card-index">03 / 04</span></div>
+            <h3 data-i18n="cloudTitle">Moln & Microsoft</h3><p data-i18n="cloudCopy">Få ut mer av Microsofts molnplattformar. Vi hjälper er skapa säkra, sammankopplade och produktiva digitala arbetsplatser.</p>
+            <div class="tags"><span>Microsoft Azure</span><span>Microsoft 365</span><span>SharePoint</span><span data-i18n="tagCloud">Molnlösningar</span></div>
+          </article>
+          <article class="service-card">
+            <div class="card-top"><span class="icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4M8 9l-2 2 2 2m8-4 2 2-2 2m-3-5-2 6"/></svg></span><span class="card-index">04 / 04</span></div>
+            <h3 data-i18n="webTitle">Webb & mobil</h3><p data-i18n="webCopy">Digitala tjänster utformade för människor och byggda för att växa. Från idé och utveckling till responsiva webbplatser och appar.</p>
+            <div class="tags"><span>React</span><span>Angular</span><span>iOS</span><span>Android</span><span data-i18n="tagWebDev">Webbutveckling</span></div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="approach section" id="approach">
-      <div class="container approach-grid">
-        <div class="approach-copy">
-          <p class="eyebrow light"><span></span> Så arbetar vi</p>
-          <h2>Från insikt<br>till resultat.</h2>
-          <p>Vår metod är enkel: förstå problemet, involvera rätt personer och leverera tydliga resultat i varje steg.</p>
-          <a class="button button-light" href="#contact">Starta ett projekt <span aria-hidden="true">↗</span></a>
-        </div>
-        <ol class="steps">
-          <li><span>01</span><div><h3>Fånga behovet</h3><p>Vi kartlägger nuläge, mål och förutsättningar tillsammans med er.</p></div></li>
-          <li><span>02</span><div><h3>Skapa riktning</h3><p>Vi omsätter komplexitet i en tydlig och genomförbar plan.</p></div></li>
-          <li><span>03</span><div><h3>Leverera värde</h3><p>Vi jobbar nära, anpassar efter behov och följer upp det som levererats.</p></div></li>
-        </ol>
-      </div>
-    </section>
-
-    <section class="about section" id="about">
+    <section class="section about" id="about">
       <div class="container about-grid">
-        <div>
-          <p class="eyebrow"><span></span> Om Xeekonsult</p>
-          <h2>Teknisk skärpa.<br><em>Mänsklig närvaro.</em></h2>
-        </div>
-        <div class="about-copy">
-          <p class="lead">Vi tror på teknik som gör organisationer bättre — inte bara mer avancerade.</p>
-          <p>Xeekonsult kombinerar teknisk expertis med affärsförståelse. Vi är engagerade i frågorna, raka i kommunikationen och fokuserade på lösningar som håller över tid.</p>
-          <div class="principles">
-            <span>Raka besked</span><span>Praktiska lösningar</span><span>Långsiktigt värde</span>
-          </div>
-        </div>
+        <div class="about-visual" aria-hidden="true"><span class="visual-label one">Microsoft 365</span><span class="visual-label two">Digitalisering</span><span class="visual-label three" data-i18n="visualAccounting">Redovisning</span><span class="visual-label four">Azure</span><span class="visual-core">X</span></div>
+        <div class="about-copy"><p class="eyebrow" data-i18n="aboutEyebrow">Om XEE KONSULT AB</p><h2 data-i18n="aboutTitle">En partner som ser hela bilden.</h2><p data-i18n="aboutCopy1">Vi kombinerar ekonomisk ordning med teknisk kompetens för att göra företag enklare att driva och bättre rustade för framtiden.</p><p data-i18n="aboutCopy2">Vårt arbetssätt är lyhört, lösningsorienterat och transparent. Vi börjar med att förstå er verksamhet, hittar rätt väg framåt och finns med när lösningen ska fungera i vardagen.</p><div class="values"><span class="value" data-i18n="valuePersonal">Personligt engagemang</span><span class="value" data-i18n="valueClear">Tydlig kommunikation</span><span class="value" data-i18n="valuePractical">Praktiska lösningar</span><span class="value" data-i18n="valueLong">Långsiktigt samarbete</span></div></div>
       </div>
     </section>
 
-    <section class="contact" id="contact">
-      <div class="container contact-inner">
-        <div>
-          <p class="eyebrow light"><span></span> Starta en dialog</p>
-          <h2>Vad kan vi lösa<br><em>tillsammans?</em></h2>
-        </div>
-        <div class="contact-action">
-          <p>Berätta om ert utmaning eller nästa steg.</p>
-          <a class="button button-primary" href="mailto:info@xeekonsult.se">info@xeekonsult.se <span aria-hidden="true">↗</span></a>
-        </div>
-      </div>
-    </section>
+    <section class="contact-section" id="contact"><div class="container contact-panel"><div class="contact-copy"><p class="eyebrow" data-i18n="contactEyebrow">Kontakt</p><h2 data-i18n="contactTitle">Har ni en idé eller utmaning?</h2><p data-i18n="contactCopy">Berätta vad ni vill utveckla — inom ekonomi, IT eller digitalisering. Vi tar gärna ett första samtal om hur vi kan hjälpa till.</p></div><div class="contact-card"><div class="contact-card-label" data-i18n="contactEmailLabel">Mejla oss</div><a class="email-link" href="mailto:info@xeekonsult.se">info@xeekonsult.se ↗</a><p data-i18n="companyName">XEE KONSULT AB</p><p><a href="https://xeekonsult.se">xeekonsult.se</a><span aria-hidden="true"> · </span><a href="https://xeekonsult.com">xeekonsult.com</a></p></div></div></section>
   </main>
 
-  <footer>
-    <div class="container footer-inner">
-      <a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true">X</span><span>xeekonsult</span></a>
-      <p>© <span id="year"></span> Xeekonsult</p>
-      <div><a href="mailto:info@xeekonsult.se">Kontakt</a><a href="#top">Till toppen ↑</a></div>
-    </div>
-  </footer>
+  <footer class="footer"><div class="container footer-inner"><a class="brand" href="#home"><span class="brand-mark" aria-hidden="true">X</span><span>XEE KONSULT AB</span></a><p>© <span id="year"></span> XEE KONSULT AB · <span data-i18n="rights">Alla rättigheter förbehållna</span></p><p><a href="mailto:info@xeekonsult.se">info@xeekonsult.se</a></p></div></footer>
+
+  <script>
+    const translations = {
+      sv: {
+        skip:'Hoppa till innehåll', navServices:'Tjänster', navAbout:'Om oss', navContact:'Kontakt',
+        heroEyebrow:'Redovisning · IT · Digital utveckling', heroTitle:'Ert företag.<br><span class="gradient-text">Redo för nästa steg.</span>',
+        heroCopy:'XEE KONSULT AB hjälper företag att förenkla vardagen och skapa nya möjligheter — med pålitlig redovisning och smarta digitala lösningar.', heroCta:'Låt oss prata', heroSecondary:'Utforska våra tjänster', heroNote:'En engagerad partner för företagets hela resa',
+        focusLabel:'Våra kompetensområden', focusAccounting:'Redovisning', focusIT:'IT-konsultation', focusCloud:'Microsoft Cloud', focusWeb:'Webb & mobil',
+        servicesEyebrow:'Vad vi erbjuder', servicesTitle:'Kompetensen ni behöver.<br>Lösningarna som gör skillnad.', servicesIntro:'Från den löpande ekonomin till nästa digitala satsning — vi bidrar med erfarenhet, struktur och ett personligt engagemang.',
+        accountingTitle:'Redovisning & bokföring', accountingCopy:'Ordning och trygghet i företagets ekonomi. Vi hjälper er med den löpande redovisningen, så att ni får mer tid att fokusera på verksamheten.', tagBookkeeping:'Bokföring', tagInvoicing:'Fakturering', tagVat:'Moms', tagPayroll:'Löner', tagAnnual:'Årsredovisning',
+        itTitle:'IT-konsultation', itCopy:'Teknik som stödjer verksamhetens mål. Vi hjälper er planera, utveckla och förbättra IT-miljöer och digitala arbetssätt.', tagArchitecture:'IT-arkitektur', tagSoftware:'Mjukvaruutveckling', tagDigital:'Digitalisering', tagAdvisory:'Rådgivning',
+        cloudTitle:'Moln & Microsoft', cloudCopy:'Få ut mer av Microsofts molnplattformar. Vi hjälper er skapa säkra, sammankopplade och produktiva digitala arbetsplatser.', tagCloud:'Molnlösningar',
+        webTitle:'Webb & mobil', webCopy:'Digitala tjänster utformade för människor och byggda för att växa. Från idé och utveckling till responsiva webbplatser och appar.', tagWebDev:'Webbutveckling',
+        aboutEyebrow:'Om XEE KONSULT AB', aboutTitle:'En partner som ser hela bilden.', aboutCopy1:'Vi kombinerar ekonomisk ordning med teknisk kompetens för att göra företag enklare att driva och bättre rustade för framtiden.', aboutCopy2:'Vårt arbetssätt är lyhört, lösningsorienterat och transparent. Vi börjar med att förstå er verksamhet, hittar rätt väg framåt och finns med när lösningen ska fungera i vardagen.', visualAccounting:'Redovisning', valuePersonal:'Personligt engagemang', valueClear:'Tydlig kommunikation', valuePractical:'Praktiska lösningar', valueLong:'Långsiktigt samarbete',
+        contactEyebrow:'Kontakt', contactTitle:'Har ni en idé eller utmaning?', contactCopy:'Berätta vad ni vill utveckla — inom ekonomi, IT eller digitalisering. Vi tar gärna ett första samtal om hur vi kan hjälpa till.', contactEmailLabel:'Mejla oss', companyName:'XEE KONSULT AB', rights:'Alla rättigheter förbehållna', menuOpen:'Öppna meny', menuClose:'Stäng meny', pageTitle:'XEE KONSULT AB — Redovisning, IT & digital utveckling', pageDescription:'XEE KONSULT AB erbjuder redovisning, IT-konsultation, molntjänster och webbutveckling. Vi hjälper företag att arbeta smartare och växa digitalt.'
+      },
+      en: {
+        skip:'Skip to content', navServices:'Services', navAbout:'About us', navContact:'Contact',
+        heroEyebrow:'Accounting · IT · Digital transformation', heroTitle:'Your business.<br><span class="gradient-text">Ready for what’s next.</span>',
+        heroCopy:'XEE KONSULT AB helps businesses simplify everyday work and unlock new opportunities with dependable accounting and smart digital solutions.', heroCta:'Let’s talk', heroSecondary:'Explore our services', heroNote:'A committed partner for every stage of your business journey',
+        focusLabel:'Our areas of expertise', focusAccounting:'Accounting', focusIT:'IT consulting', focusCloud:'Microsoft Cloud', focusWeb:'Web & mobile',
+        servicesEyebrow:'What we do', servicesTitle:'The expertise you need.<br>Solutions that make a difference.', servicesIntro:'From day-to-day finances to your next digital initiative, we bring experience, structure and a personal commitment to every engagement.',
+        accountingTitle:'Accounting & bookkeeping', accountingCopy:'Confidence and clarity in your company finances. We support your day-to-day accounting so you can spend more time focusing on your business.', tagBookkeeping:'Bookkeeping', tagInvoicing:'Invoicing', tagVat:'VAT', tagPayroll:'Payroll', tagAnnual:'Annual reports',
+        itTitle:'IT consulting', itCopy:'Technology that supports your business goals. We help you plan, develop and improve your IT environments and digital ways of working.', tagArchitecture:'IT architecture', tagSoftware:'Software development', tagDigital:'Digitalisation', tagAdvisory:'Advisory',
+        cloudTitle:'Cloud & Microsoft', cloudCopy:'Get more from Microsoft cloud platforms. We help you create secure, connected and productive digital workplaces.', tagCloud:'Cloud solutions',
+        webTitle:'Web & mobile', webCopy:'Digital services designed for people and built to grow. From concept and development to responsive websites and mobile apps.', tagWebDev:'Web development',
+        aboutEyebrow:'About XEE KONSULT AB', aboutTitle:'A partner who sees the bigger picture.', aboutCopy1:'We combine sound financial management with technical expertise to make businesses easier to run and better prepared for the future.', aboutCopy2:'Our approach is attentive, practical and transparent. We start by understanding your business, find the right way forward and stay involved to make sure the solution works in everyday life.', visualAccounting:'Accounting', valuePersonal:'Personal commitment', valueClear:'Clear communication', valuePractical:'Practical solutions', valueLong:'Long-term partnership',
+        contactEyebrow:'Contact', contactTitle:'Have an idea or a challenge?', contactCopy:'Tell us what you would like to develop in finance, IT or digitalisation. We would be happy to have an initial conversation about how we can help.', contactEmailLabel:'Email us', companyName:'XEE KONSULT AB', rights:'All rights reserved', menuOpen:'Open menu', menuClose:'Close menu', pageTitle:'XEE KONSULT AB — Accounting, IT & digital transformation', pageDescription:'XEE KONSULT AB provides accounting, IT consulting, cloud services and web development. We help businesses work smarter and grow digitally.'
+      }
+    };
+    const languageButtons = document.querySelectorAll('[data-lang]');
+    const menuButton = document.querySelector('.menu-button');
+    const navLinks = document.querySelector('.nav-links');
+    function setLanguage(language) {
+      const lang = translations[language] ? language : 'sv';
+      document.documentElement.lang = lang;
+      document.title = translations[lang].pageTitle;
+      document.querySelector('meta[name="description"]').content = translations[lang].pageDescription;
+      document.querySelectorAll('[data-i18n]').forEach((element) => {
+        const value = translations[lang][element.dataset.i18n];
+        if (value !== undefined) element.textContent = value;
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach((element) => {
+        const value = translations[lang][element.dataset.i18nHtml];
+        if (value !== undefined) element.innerHTML = value;
+      });
+      languageButtons.forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.lang === lang)));
+      menuButton.setAttribute('aria-label', translations[lang][menuButton.getAttribute('aria-expanded') === 'true' ? 'menuClose' : 'menuOpen']);
+      try { localStorage.setItem('xeekonsult-language', lang); } catch (_) {}
+    }
+    languageButtons.forEach((button) => button.addEventListener('click', () => setLanguage(button.dataset.lang)));
+    menuButton.addEventListener('click', () => {
+      const open = menuButton.getAttribute('aria-expanded') !== 'true';
+      menuButton.setAttribute('aria-expanded', String(open));
+      navLinks.classList.toggle('open', open);
+      menuButton.setAttribute('aria-label', translations[document.documentElement.lang][open ? 'menuClose' : 'menuOpen']);
+    });
+    navLinks.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.setAttribute('aria-label', translations[document.documentElement.lang].menuOpen);
+    }));
+    document.querySelector('#year').textContent = new Date().getFullYear();
+    let savedLanguage = 'sv';
+    try { savedLanguage = localStorage.getItem('xeekonsult-language') || 'sv'; } catch (_) {}
+    setLanguage(savedLanguage);
+  </script>
 </body>
 </html>
