@@ -1,0 +1,106 @@
+<section class="customer-logos" id="customers" aria-labelledby="customer-logos-title">
+  <div class="customer-logos__inner">
+    <div class="customer-logos__intro">
+      <p class="customer-logos__eyebrow" data-sv="VÅRA KUNDER" data-en="OUR CLIENTS">VÅRA KUNDER</p>
+      <h2 id="customer-logos-title" data-sv="Företag vi arbetar med" data-en="Businesses we work with">Företag vi arbetar med</h2>
+    </div>
+
+    <div class="customer-logos__window" aria-label="Kundlogotyper, roterar automatiskt">
+      <div class="customer-logos__track">
+        <!-- Replace these text placeholders with approved customer logos and names. -->
+        <div class="customer-logos__item">Kundnamn 1</div>
+        <div class="customer-logos__item">Kundnamn 2</div>
+        <div class="customer-logos__item">Kundnamn 3</div>
+        <div class="customer-logos__item">Kundnamn 4</div>
+        <div class="customer-logos__item">Kundnamn 5</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .customer-logos {
+    padding: 72px 24px;
+    overflow: hidden;
+    background: #f6f8fc;
+    color: #172033;
+  }
+  .customer-logos__inner {
+    width: min(1120px, 100%);
+    margin: 0 auto;
+  }
+  .customer-logos__intro { margin-bottom: 28px; text-align: center; }
+  .customer-logos__eyebrow {
+    margin: 0 0 10px;
+    color: #4778e8;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+  }
+  .customer-logos h2 { margin: 0; font-size: clamp(1.6rem, 3vw, 2.25rem); }
+  .customer-logos__window { overflow: hidden; }
+  .customer-logos__track {
+    display: flex;
+    gap: 20px;
+    will-change: transform;
+  }
+  .customer-logos__item {
+    display: grid;
+    flex: 0 0 calc((100% - 60px) / 4);
+    min-height: 100px;
+    place-items: center;
+    padding: 20px;
+    border: 1px solid #e4e9f2;
+    border-radius: 12px;
+    background: #fff;
+    color: #657087;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-align: center;
+  }
+  @media (max-width: 700px) {
+    .customer-logos { padding: 56px 20px; }
+    .customer-logos__item { flex-basis: calc((100% - 20px) / 2); min-height: 84px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .customer-logos__track { scroll-behavior: auto; }
+  }
+</style>
+
+<script>
+  (() => {
+    const section = document.querySelector('.customer-logos');
+    if (!section) return;
+
+    const track = section.querySelector('.customer-logos__track');
+    const windowEl = section.querySelector('.customer-logos__window');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let timer;
+
+    const rotate = () => {
+      if (reducedMotion.matches || section.matches(':hover') || section.contains(document.activeElement)) return;
+      const first = track.firstElementChild;
+      const gap = parseFloat(getComputedStyle(track).gap) || 0;
+      const distance = first.getBoundingClientRect().width + gap;
+      track.style.transition = 'transform 500ms ease';
+      track.style.transform = `translateX(-${distance}px)`;
+      track.addEventListener('transitionend', () => {
+        track.style.transition = 'none';
+        track.append(first);
+        track.style.transform = 'translateX(0)';
+      }, { once: true });
+    };
+
+    const start = () => {
+      clearInterval(timer);
+      if (!reducedMotion.matches) timer = setInterval(rotate, 3000);
+    };
+
+    windowEl.addEventListener('mouseenter', () => clearInterval(timer));
+    windowEl.addEventListener('mouseleave', start);
+    windowEl.addEventListener('focusin', () => clearInterval(timer));
+    windowEl.addEventListener('focusout', start);
+    reducedMotion.addEventListener?.('change', start);
+    start();
+  })();
+</script>
